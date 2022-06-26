@@ -6,25 +6,22 @@ public class DetectionArea : MonoBehaviour
 {
     public GameObject player;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter (Collider other)
     {
-        if (!player.CompareTag("Invisible"))
+        if (other.gameObject.CompareTag("Invisible") == false)
         {
+            Debug.Log("Tag");
             player.tag = "Detected";
         }
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnTriggerExit (Collider other)
     {
-        if (!player.CompareTag("Invisible"))
+        Debug.Log("Left");
+        if (other.gameObject.CompareTag("Invisible") == false)
         {
-            player.tag = "Untagged";
+            player.tag = "Player";
+            Debug.Log("Untag");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
