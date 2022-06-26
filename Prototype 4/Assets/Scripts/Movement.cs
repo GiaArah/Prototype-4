@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Vector3 currentPos = transform.position;
-        Vector3 Move = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
-        transform.position += Move * Time.deltaTime * moveSpeed;
+        Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
+        transform.position += move * Time.deltaTime * moveSpeed;
     }
 }

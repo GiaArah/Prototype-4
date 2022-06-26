@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Detected
   - Invisible
+  - EnemyMoveUp
+  - EnemyMoveDown
+  - EnemyMoveLeft
+  - EnemyMoveRight
+  - EnemyRotateClockwise
+  - EnemyRotateC-Clockwise
   layers:
   - Default
   - TransparentFX

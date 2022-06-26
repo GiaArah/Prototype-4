@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class DetectionArea : MonoBehaviour
 {
-    public GameObject player;
 
     void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.CompareTag("Invisible") == false)
+        if (other.gameObject.CompareTag("Invisible") == false && other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Tag");
-            player.tag = "Detected";
+            other.tag = "Detected";
         }
     }
 
     void OnTriggerExit (Collider other)
     {
         Debug.Log("Left");
-        if (other.gameObject.CompareTag("Invisible") == false)
+        if (other.gameObject.CompareTag("Invisible") == false && other.gameObject.CompareTag("Detected"))
         {
-            player.tag = "Player";
+            other.tag = "Player";
             Debug.Log("Untag");
         }
     }
