@@ -16,11 +16,11 @@ public class DetectionArea : MonoBehaviour
 
     void OnTriggerExit (Collider other)
     {
-        Debug.Log("Left");
         if (other.gameObject.CompareTag("Invisible") == false && other.gameObject.CompareTag("Detected"))
         {
             other.tag = "Player";
             Debug.Log("Untag");
+            Debug.Log("Left");
         }
     }
 }

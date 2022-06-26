@@ -27,7 +27,7 @@ public class DetectionMeter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(detectionTrack);
+        //Debug.Log(detectionTrack);
         Vector3 tempScale = meterSprite.transform.localScale;
         Vector3 tempPos = meterSprite.transform.position;
         if (gameObject.CompareTag("Detected"))

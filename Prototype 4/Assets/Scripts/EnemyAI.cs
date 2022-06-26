@@ -34,15 +34,15 @@ public class EnemyAI : MonoBehaviour
                 targetRotation = new Vector3(0f, 0f, 90f);
                 break;
             case "EnemyRotateClockwise":
-                Rotate = new Vector3(0f, 0f, 1f).normalized;
+                Rotate = new Vector3(0f, 0f, -1f).normalized;
                 break;
-            case "EnemyRotateCClockwise":
+            case "EnemyRotateC-Clockwise":
                 Rotate = new Vector3(0f, 0f, 1f).normalized;
                 break;
         }
 
         transform.position += Move * Time.deltaTime * moveSpeed;
-        transform.eulerAngles += Rotate * Time.deltaTime * rotateSpeed;
+        transform.eulerAngles += Rotate * Time.deltaTime * rotateSpeed * 20;
         if(Move != Vector3.zero)
         {
             transform.eulerAngles = targetRotation;
