@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     public float moveSpeed = 1f;
     public AudioSource footsteps;
 
-
+    
 
     // Update is called once per frame
     void Update()
@@ -29,5 +29,13 @@ public class Movement : MonoBehaviour
             transform.position = new Vector3(currentPos.x,currentPos.y,0f);
             Debug.Log("reset height");
         }
+
+        if(gameObject.CompareTag("Invisible"))
+        {
+            
+
+        }
     }
+
+
 }

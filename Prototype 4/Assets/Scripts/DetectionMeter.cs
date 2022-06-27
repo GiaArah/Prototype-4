@@ -15,6 +15,8 @@ public class DetectionMeter : MonoBehaviour
     private Vector3 scaleChange;
     private Vector3 posChange;
 
+    public AudioSource alarm;
+
     void Start()
     {
         scaleMath = 0.9f / (detectionMax / detectionModifier);
@@ -32,6 +34,7 @@ public class DetectionMeter : MonoBehaviour
         Vector3 tempPos = meterSprite.transform.position;
         if (gameObject.CompareTag("Detected"))
         {
+            Alarm();
 
             if(tempScale.x < 0.9f)
             {
@@ -45,6 +48,8 @@ public class DetectionMeter : MonoBehaviour
         }
         else
         {
+            alarm.Pause();
+
             if (detectionTrack > 0)
             {
                 detectionTrack -= Time.deltaTime * detectionModifier;
@@ -82,4 +87,13 @@ public class DetectionMeter : MonoBehaviour
             }
         }
     }
+
+    void Alarm()
+    {
+        if(!alarm.isPlaying)
+        {
+            alarm.Play();
+        }
+    }
+
 }
