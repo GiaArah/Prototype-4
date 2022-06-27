@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class EnemyAI : MonoBehaviour
     private Vector3 Move = new Vector3(0f, 0f, 0f);
     private Vector3 Rotate = new Vector3(0f, 0f, 0f);
     private Vector3 moveRotate = new Vector3(0f, 0f, 0f);
+    private AudioSource enemyFootsteps;
+    void Start()
+    {
+        enemyFootsteps = gameObject.GetComponent<AudioSource>();
+    }
+    
 
     // Update is called once per frame
     void Update()
@@ -38,10 +45,19 @@ public class EnemyAI : MonoBehaviour
                 break;
             case "EnemyRotateC-Clockwise":
                 Rotate = new Vector3(0f, 0f, 1f).normalized;
+                break; 
+            case "Untagged":
+                Rotate = new Vector3(0f, 0f, 0f).normalized;
+                Move = new Vector3(0f, 0f, 0f).normalized;
                 break;
         }
 
         transform.position += Move * Time.deltaTime * moveSpeed;
+        if(Move != Vector3.zero && !enemyFootsteps.isPlaying)
+        {
+            enemyFootsteps.Play();
+        }
+
         transform.eulerAngles += Rotate * Time.deltaTime * rotateSpeed * 20;
         if(Move != Vector3.zero)
         {
