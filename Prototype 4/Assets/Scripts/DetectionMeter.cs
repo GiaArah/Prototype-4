@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DetectionMeter : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class DetectionMeter : MonoBehaviour
     void Update()
     {
         //Debug.Log(detectionTrack);
+        if(detectionTrack >= 9.9)
+        {
+            SceneManager.LoadScene(sceneName: "YouLose");
+        }
         Vector3 tempScale = meterSprite.transform.localScale;
         Vector3 tempPos = meterSprite.transform.position;
         if (gameObject.CompareTag("Detected"))
